@@ -8,6 +8,11 @@ const getAll = async () => {
   return result
 }
 
+const create = async (data) => {
+  console.log(data);
+  return data;
+}
 module.exports = {
-  getAll
+  getAll,
+  create
 }
