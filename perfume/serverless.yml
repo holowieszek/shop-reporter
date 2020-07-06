@@ -13,3 +13,7 @@ custom:
 functions:
   getAllPerfume:
     handler: src/getAllPerfume/function.invoke
+    events:
+      - http:
+          path: perfume
+          method: GET
