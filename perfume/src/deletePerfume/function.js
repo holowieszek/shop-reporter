@@ -3,7 +3,7 @@ const dbAdapter = require('../common/dbAdapterDynamoDb')
 const { returnResponse } = require('../common/returnResponse');
 
 const invoke = async () => {
-  const results = await persistence.getAll(dbAdapter)
+  const results = await persistence.remove(dbAdapter)
 
   return returnResponse(results);
 };

@@ -1,0 +1,32 @@
+@host = https://c6s8mq49md.execute-api.eu-central-1.amazonaws.com/dev
+
+####
+# getAll
+GET {{ host }}/perfume
+
+
+####
+# create
+POST {{ host }}/perfume
+Content-Type: application/json
+
+{
+    "name": ""
+}
+
+####
+# getById
+GET {{ host }}/perfume/2
+
+####
+# updatePerfume
+PUT {{ host }}/perfume/2
+Content-Type: application/json
+
+{
+    "name": "New name"
+}
+
+####
+# removePerfume
+DELETE {{ host }}/perfume/2

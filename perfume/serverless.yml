@@ -13,3 +13,35 @@ custom:
 functions:
   getAllPerfume:
     handler: src/getAllPerfume/function.invoke
+    events:
+      - http:
+          path: perfume
+          method: GET
+    
+  createPerfume:
+    handler: src/createPerfume/function.invoke
+    events:
+      - http:
+          path: perfume
+          method: POST
+
+  getById:
+    handler: src/getById/function.invoke
+    events:
+      - http:
+          path: perfume/{id}
+          method: GET
+
+  updatePerfume:
+    handler: src/updatePerfume/function.invoke
+    events:
+      - http:
+          path: perfume/{id}
+          method: PUT
+
+  removePerfume:
+    handler: src/removePerfume/function.invoke
+    events:
+      - http:
+          path: perfume/{id}
+          method: DELETE
