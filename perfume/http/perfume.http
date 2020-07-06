@@ -3,3 +3,13 @@
 ####
 # getAll
 GET {{ host }}/perfume
+
+
+####
+# create
+POST {{ host }}/perfume
+Content-Type: application/json
+
+{
+    "name": ""
+}
