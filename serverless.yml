@@ -3,7 +3,13 @@ service: shop-reporter
 provider:
   name: aws
   runtime: nodejs12.x
+  stage: dev
+  region: ${self:custom.deployment.myRegion.${self:custom.deployment.myStage}}
+  myProfile: ${self:custom.deployment.myProfile.${self:custom.deployment.myStage}}
 
+custom:
+  deployment: ${file(config/deployment.yml):deployment}
+  
 functions:
   hello:
     handler: handler.hello
