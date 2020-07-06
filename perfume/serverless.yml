@@ -11,5 +11,5 @@ custom:
   deployment: ${file(config/deployment.yml):deployment}
   
 functions:
-  hello:
-    handler: src/handler.hello
+  getAllPerfume:
+    handler: src/getAllPerfume/function.invoke
