@@ -1,0 +1,5 @@
+@host = https://c6s8mq49md.execute-api.eu-central-1.amazonaws.com/dev
+
+####
+# getAll
+GET {{ host }}/perfume
