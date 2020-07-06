@@ -13,3 +13,20 @@ Content-Type: application/json
 {
     "name": ""
 }
+
+####
+# getById
+GET {{ host }}/perfume/2
+
+####
+# updatePerfume
+PUT {{ host }}/perfume/2
+Content-Type: application/json
+
+{
+    "name": "New name"
+}
+
+####
+# removePerfume
+DELETE {{ host }}/perfume/2
