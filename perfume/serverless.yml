@@ -17,3 +17,10 @@ functions:
       - http:
           path: perfume
           method: GET
+    
+  createPerfume:
+    handler: src/createPerfume/function.invoke
+    events:
+      - http:
+          path: perfume
+          method: POST
