@@ -2,7 +2,7 @@ service: shop-reporter
 
 plugins:
   - serverless-iam-roles-per-function
-  
+
 provider:
   name: aws
   runtime: nodejs12.x
@@ -31,6 +31,11 @@ functions:
 
   createPerfume:
     handler: src/createPerfume/function.invoke
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:PutItem
+        Resource: "arn:aws:dynamodb:${self:provider.region}:*:table/${self:custom.tableName}"
     events:
       - http:
           path: perfume
