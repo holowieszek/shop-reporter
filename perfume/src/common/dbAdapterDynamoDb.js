@@ -1,3 +1,9 @@
+const AWS = require('aws-sdk')
+const DocumentClient = new AWS.DynamoDB.DocumentClient()
+// const { PerfumeModel } = require('./Models')
+
+const TableName = process.env.tableName
+
 const records = [
   { id: 1, title: 'Lorem Ipsum' },
   { id: 2, title: 'Lorem Ipsum' },
@@ -5,7 +11,23 @@ const records = [
   { id: 4, title: 'Lorem Ipsum' },
 ]
 
-const getAll = async () => records
+const getAllByHelper = async (field, value) => {
+  const params = {
+    TableName,
+    KeyConditionExpression: '#field = :value',
+    ExpressionAttributeNames: {
+      '#field': field
+    },
+    ExpressionAttributeValues: {
+      ':value': value
+    }
+  }
+
+  const results = await DocumentClient.query(params).promise()
+  return results.Items
+}
+
+const getAll = async () => getAllByHelper('pk', 'PERFUME')
 
 const create = async (data) => {
   console.log(data);
