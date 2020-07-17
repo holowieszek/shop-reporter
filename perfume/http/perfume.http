@@ -1,4 +1,4 @@
-@host = https://c6s8mq49md.execute-api.eu-central-1.amazonaws.com/dev
+@host = https://ne235ye2mb.execute-api.eu-central-1.amazonaws.com/dev
 
 ####
 # getAll
@@ -11,12 +11,12 @@ POST {{ host }}/perfume
 Content-Type: application/json
 
 {
-    "name": ""
+    "name": "dasdsa"
 }
 
 ####
 # getById
-GET {{ host }}/perfume/2
+GET {{ host }}/perfume/1
 
 ####
 # updatePerfume
