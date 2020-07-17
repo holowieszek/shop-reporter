@@ -5,7 +5,7 @@ const Perfume = new Entity({
   name: 'Perfume',
   attributes: {
     pk: { partitionKey: true, default: 'PERFUME' },
-    id: { hidden: true, sortKey: true },
+    id: { sortKey: true },
     brand: { type: 'string' },
     model: { type: 'string' },
     capacity: { type: 'number' },
