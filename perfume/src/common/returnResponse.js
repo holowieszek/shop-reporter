@@ -7,6 +7,4 @@ const returnResponse = (body, status = 200) => ({
   body: JSON.stringify(body)
 });
 
-module.exports = {
-  returnResponse,
-};
+module.exports = returnResponse;
