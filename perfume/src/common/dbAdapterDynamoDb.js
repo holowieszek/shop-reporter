@@ -1,8 +1,6 @@
-const AWS = require('aws-sdk')
 const { v4: uuidv4 } = require('uuid')
 const MyTable = require('./Table')
 const Perfume = require('./Entities')
-const TableName = process.env.tableName
 
 const records = [
   { id: 1, title: 'Lorem Ipsum' },
@@ -27,8 +25,7 @@ const create = async (data) => {
     brand: data.brand,
     model: data.model,
     capacity: data.capacity,
-    price: data.price,
-    // store: 'storename'
+    price: data.price
   }
 
   const result = await Perfume.put(item)
