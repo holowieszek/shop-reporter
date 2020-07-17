@@ -1,0 +1,35 @@
+@host = https://ne235ye2mb.execute-api.eu-central-1.amazonaws.com/dev
+
+####
+# getAll
+GET {{ host }}/perfume
+
+
+####
+# create
+POST {{ host }}/perfume
+Content-Type: application/json
+
+{
+    "brand": "Hugo dsada",
+    "model": "aaaa",
+    "capacity": 50,
+    "price": "100.99"
+}
+
+####
+# getById
+GET {{ host }}/perfume/1
+
+####
+# updatePerfume
+PUT {{ host }}/perfume/2
+Content-Type: application/json
+
+{
+    "name": "New name"
+}
+
+####
+# removePerfume
+DELETE {{ host }}/perfume/2

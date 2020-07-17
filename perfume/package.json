@@ -1,0 +1,26 @@
+{
+  "name": "perfume",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "aws-sdk": "^2.710.0",
+    "eslint": "^7.4.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "jest": "^26.1.0",
+    "serverless-iam-roles-per-function": "^2.0.2",
+    "serverless-plugin-tracing": "^2.0.0"
+  },
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "dynamodb-toolbox": "^0.2.0-beta.1",
+    "uuid": "^8.2.0"
+  }
+}
