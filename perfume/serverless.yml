@@ -11,10 +11,15 @@ provider:
   myProfile: ${self:custom.deployment.myProfile.${self:custom.deployment.myStage}}
   environment:
     tableName: ${self:custom.tableName}
+    logLevel: ${self:custom.logLevel.${self:custom.deployment.myStage}}
 
 custom:
   deployment: ${file(config/deployment.yml):deployment}
   tableName: ${self:service}-${self:custom.deployment.myStage}
+  logLevel:
+    dev: 'DEBUG'
+    test: 'INFO'
+    prod: 'WARN'
 
 functions:
   getAllPerfume:
