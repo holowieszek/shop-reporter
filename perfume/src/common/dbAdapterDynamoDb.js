@@ -13,7 +13,7 @@ const getAll = async () => {
   const results = await MyTable.query(
     'PERFUME',
     {
-      attributes: ['model', 'brand', 'capacity', 'price']
+      attributes: ['sk', 'model', 'brand', 'capacity', 'price']
     }
   )
   return results.Items
@@ -32,7 +32,21 @@ const create = async (data) => {
   return result
 }
 
-const getById = async (id) => records.filter((record) => record.id === id)
+const getById = async (id) => {
+  const item = {
+    id
+  }
+
+  console.log('ITEM', item);
+
+  const result = await Perfume.get(
+    item,
+    {
+      attributes: ['sk', 'model', 'brand', 'capacity', 'price']
+    }
+  )
+  return result.Item
+}
 
 const update = async (id, data) => {
   console.log(id, data)
