@@ -1,7 +1,7 @@
 const AWS = require('aws-sdk')
-const DocumentClient = new AWS.DynamoDB.DocumentClient()
-// const { PerfumeModel } = require('./Models')
-
+const { v4: uuidv4 } = require('uuid')
+const MyTable = require('./Table')
+const Perfume = require('./Entities')
 const TableName = process.env.tableName
 
 const records = [
@@ -11,27 +11,28 @@ const records = [
   { id: 4, title: 'Lorem Ipsum' },
 ]
 
-const getAllByHelper = async (field, value) => {
-  const params = {
-    TableName,
-    KeyConditionExpression: '#field = :value',
-    ExpressionAttributeNames: {
-      '#field': field
-    },
-    ExpressionAttributeValues: {
-      ':value': value
+const getAll = async () => {
+  const results = await MyTable.query(
+    'PERFUME',
+    {
+      attributes: ['model', 'brand', 'capacity', 'price']
     }
-  }
-
-  const results = await DocumentClient.query(params).promise()
+  )
   return results.Items
 }
 
-const getAll = async () => getAllByHelper('pk', 'PERFUME')
-
 const create = async (data) => {
-  console.log(data);
-  return data;
+  const item = {
+    id: uuidv4(),
+    brand: data.brand,
+    model: data.model,
+    capacity: data.capacity,
+    price: data.price,
+    // store: 'storename'
+  }
+
+  const result = await Perfume.put(item)
+  return result
 }
 
 const getById = async (id) => records.filter((record) => record.id === id)
