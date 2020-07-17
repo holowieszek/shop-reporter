@@ -11,7 +11,10 @@ POST {{ host }}/perfume
 Content-Type: application/json
 
 {
-    "name": "dasdsa"
+    "brand": "Hugo dsada",
+    "model": "aaaa",
+    "capacity": 50,
+    "price": "100.99"
 }
 
 ####
