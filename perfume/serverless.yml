@@ -1,23 +1,34 @@
 service: shop-reporter
 
+plugins:
+  - serverless-iam-roles-per-function
+  
 provider:
   name: aws
   runtime: nodejs12.x
   stage: dev
   region: ${self:custom.deployment.myRegion.${self:custom.deployment.myStage}}
   myProfile: ${self:custom.deployment.myProfile.${self:custom.deployment.myStage}}
+  environment:
+    tableName: ${self:custom.tableName}
 
 custom:
   deployment: ${file(config/deployment.yml):deployment}
-  
+  tableName: ${self:service}-${self:custom.deployment.myStage}
+
 functions:
   getAllPerfume:
     handler: src/getAllPerfume/function.invoke
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:Query
+        Resource: "arn:aws:dynamodb:${self:provider.region}:*:table/${self:custom.tableName}"
     events:
       - http:
           path: perfume
           method: GET
-    
+
   createPerfume:
     handler: src/createPerfume/function.invoke
     events:
@@ -45,3 +56,23 @@ functions:
       - http:
           path: perfume/{id}
           method: DELETE
+
+resources:
+  Resources:
+    DynamoDbTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: pk # partition key
+            AttributeType: S
+          - AttributeName: sk # secondary key
+            AttributeType: S
+        KeySchema: # primary key
+          - AttributeName: pk
+            KeyType: HASH
+          - AttributeName: sk
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 2
+          WriteCapacityUnits: 2
+        TableName: ${self:custom.tableName}
