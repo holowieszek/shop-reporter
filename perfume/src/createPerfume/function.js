@@ -15,7 +15,7 @@ const invoke = async (event) => {
 
   const { error, result } = await asyncWrapper(persistence.create(dbAdapter, data))
 
-  return !error ? returnResponse(result) : returnResponse({ error: 'Something went wrong!' }, 400);
+  return !error ? returnResponse(result, 201) : returnResponse({ error: 'Something went wrong!' }, 400);
 };
 
 exports.invoke = invoke;
