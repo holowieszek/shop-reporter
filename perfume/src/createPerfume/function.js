@@ -1,6 +1,6 @@
 const persistence = require('../common/persistence')
 const dbAdapter = require('../common/dbAdapterDynamoDb')
-const { returnResponse } = require('../common/returnResponse');
+const returnResponse = require('../common/returnResponse');
 
 const invoke = async (event) => {
   const data = JSON.parse(event.body)
