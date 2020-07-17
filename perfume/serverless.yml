@@ -48,6 +48,11 @@ functions:
 
   getById:
     handler: src/getById/function.invoke
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:GetItem
+        Resource: "arn:aws:dynamodb:${self:provider.region}:*:table/${self:custom.tableName}"
     events:
       - http:
           path: perfume/{id}
