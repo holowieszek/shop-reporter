@@ -23,7 +23,7 @@ GET {{ host }}/perfume/1
 
 ####
 # updatePerfume
-PUT {{ host }}/perfume/2
+PUT {{ host }}/perfume/
 Content-Type: application/json
 
 {
@@ -32,4 +32,4 @@ Content-Type: application/json
 
 ####
 # removePerfume
-DELETE {{ host }}/perfume/2
+DELETE {{ host }}/perfume/66f1a6c7-11d1-4763-82e8-0fd4acbd7753

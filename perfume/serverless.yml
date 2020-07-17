@@ -67,6 +67,11 @@ functions:
 
   removePerfume:
     handler: src/removePerfume/function.invoke
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:DeleteItem
+        Resource: "arn:aws:dynamodb:${self:provider.region}:*:table/${self:custom.tableName}"
     events:
       - http:
           path: perfume/{id}
