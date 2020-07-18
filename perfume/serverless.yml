@@ -60,6 +60,11 @@ functions:
 
   updatePerfume:
     handler: src/updatePerfume/function.invoke
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:UpdateItem
+        Resource: "arn:aws:dynamodb:${self:provider.region}:*:table/${self:custom.tableName}"
     events:
       - http:
           path: perfume/{id}
