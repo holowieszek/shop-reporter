@@ -1,0 +1,11 @@
+deployment:
+  myRegion:
+    dev: us-east-1
+    test: us-east-1
+    prod: us-east-1
+  myProfile:
+    dev: shop-reporter
+    test: shop-reporter
+    prod: shop-reporter
+  myStage: ${opt:stage, self:provider.stage}
+  hostedZoneId: Z3N8OMBV2LQFRR
