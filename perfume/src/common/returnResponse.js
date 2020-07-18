@@ -5,6 +5,6 @@ const returnResponse = (body, status = 200) => ({
     'Access-Control-Allow-Credentials': true,
   },
   body: JSON.stringify(body)
-});
+})
 
-module.exports = returnResponse;
+module.exports = returnResponse

@@ -22,4 +22,4 @@ const asyncWrapper = (promise) => {
   return resolved
 }
 
-module.exports = asyncWrapper;
+module.exports = asyncWrapper

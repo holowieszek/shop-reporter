@@ -3,19 +3,19 @@ const LogLevels = {
   INFO: 1,
   WARN: 2,
   ERROR: 3
-};
+}
 
 const logLevelName = process.env.logLevel || 'DEBUG'
 
-const debug = (msg, params) => log('DEBUG', msg, params);
-const info = (msg, params) => log('INFO', msg, params);
-const warn = (msg, params, error) => log('WARN', msg, appendError(params, error));
-const error = (msg, params, error) => log('ERROR', msg, appendError(params, error));
+const debug = (msg, params) => log('DEBUG', msg, params)
+const info = (msg, params) => log('INFO', msg, params)
+const warn = (msg, params, error) => log('WARN', msg, appendError(params, error))
+const error = (msg, params, error) => log('ERROR', msg, appendError(params, error))
 
 const log = (levelName, message, params) => {
-  console.log('INITIALIZED LOG');
+  console.log('INITIALIZED LOG')
   if (shouldNotLog(levelName)) {
-    return;
+    return
   }
 
   const logMsg = {
@@ -25,20 +25,20 @@ const log = (levelName, message, params) => {
   }
 
   // eslint-disable-next-line prefer-template
-  console.log(message, JSON.stringify(logMsg) + ' \n');
+  console.log(message, JSON.stringify(logMsg) + ' \n')
 }
 
 const shouldNotLog = (level) => LogLevels[level] < LogLevels[logLevelName]
 
 const appendError = (params, err) => {
   if (!err) {
-    return params;
+    return params
   }
 
   return Object.assign(
     params || {},
     { errorName: err.name, errorMessage: err.message, stackTrace: err.stack }
-  );
+  )
 }
 
 module.exports = {
