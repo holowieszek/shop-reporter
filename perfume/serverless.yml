@@ -33,6 +33,7 @@ functions:
       - http:
           path: perfume
           method: GET
+          authorizer: aws_iam
 
   createPerfume:
     handler: src/createPerfume/function.invoke
@@ -45,6 +46,7 @@ functions:
       - http:
           path: perfume
           method: POST
+          authorizer: aws_iam
 
   getById:
     handler: src/getById/function.invoke
@@ -57,6 +59,7 @@ functions:
       - http:
           path: perfume/{id}
           method: GET
+          authorizer: aws_iam
 
   updatePerfume:
     handler: src/updatePerfume/function.invoke
@@ -69,6 +72,7 @@ functions:
       - http:
           path: perfume/{id}
           method: PUT
+          authorizer: aws_iam
 
   removePerfume:
     handler: src/removePerfume/function.invoke
@@ -81,6 +85,7 @@ functions:
       - http:
           path: perfume/{id}
           method: DELETE
+          authorizer: aws_iam
 
 resources:
   Resources:
