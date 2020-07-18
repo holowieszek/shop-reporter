@@ -40,11 +40,12 @@ const getById = async (id) => {
 }
 
 const update = async (id, data) => {
-  console.log(id, data)
-  const result = {
-    message: 'Updated',
-    data
+  const item = {
+    id,
+    ...data
   }
+
+  const result = await Perfume.update(item)
   return result
 }
 
