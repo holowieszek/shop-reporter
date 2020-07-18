@@ -33,6 +33,7 @@ functions:
       - http:
           path: perfume
           method: GET
+          cors: true
           authorizer: aws_iam
 
   createPerfume:
@@ -46,6 +47,7 @@ functions:
       - http:
           path: perfume
           method: POST
+          cors: true
           authorizer: aws_iam
 
   getById:
@@ -59,6 +61,7 @@ functions:
       - http:
           path: perfume/{id}
           method: GET
+          cors: true
           authorizer: aws_iam
 
   updatePerfume:
@@ -72,6 +75,7 @@ functions:
       - http:
           path: perfume/{id}
           method: PUT
+          cors: true
           authorizer: aws_iam
 
   removePerfume:
@@ -85,6 +89,7 @@ functions:
       - http:
           path: perfume/{id}
           method: DELETE
+          cors: true
           authorizer: aws_iam
 
 resources:
