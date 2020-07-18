@@ -1,12 +1,13 @@
 const persistence = require('../common/persistence')
 const dbAdapter = require('../common/dbAdapterDynamoDb')
-const returnResponse = require('../common/returnResponse');
+const returnResponse = require('../common/returnResponse')
+const asyncWrapper = require('../common/asyncWrapper')
 
 const invoke = async (event) => {
-  const id = event.pathParameters
-  const results = await persistence.remove(dbAdapter, id)
+  const { id } = event.pathParameters
+  const { error, result } = await asyncWrapper(persistence.remove(dbAdapter, id))
 
-  return returnResponse(results, 201);
-};
+  return !error ? returnResponse(result) : returnResponse({ error: 'Something went wrong!' }, 400)
+}
 
-exports.invoke = invoke;
+exports.invoke = invoke

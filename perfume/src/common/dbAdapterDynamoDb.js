@@ -2,13 +2,6 @@ const { v4: uuidv4 } = require('uuid')
 const MyTable = require('./Table')
 const Perfume = require('./Entities')
 
-const records = [
-  { id: 1, title: 'Lorem Ipsum' },
-  { id: 2, title: 'Lorem Ipsum' },
-  { id: 3, title: 'Lorem Ipsum' },
-  { id: 4, title: 'Lorem Ipsum' },
-]
-
 const getAll = async () => {
   const results = await MyTable.query(
     'PERFUME',
@@ -37,8 +30,6 @@ const getById = async (id) => {
     id
   }
 
-  console.log('ITEM', item);
-
   const result = await Perfume.get(
     item,
     {
@@ -49,20 +40,21 @@ const getById = async (id) => {
 }
 
 const update = async (id, data) => {
-  console.log(id, data)
-  const result = {
-    message: 'Updated',
-    data
+  const item = {
+    id,
+    ...data
   }
+
+  const result = await Perfume.update(item)
   return result
 }
 
 const remove = async (id) => {
-  console.log(id)
-  const result = {
-    message: 'Removed',
-    ...id
+  const item = {
+    id
   }
+
+  const result = await Perfume.delete(item)
   return result
 }
 

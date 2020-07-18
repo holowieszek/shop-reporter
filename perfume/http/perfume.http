@@ -1,4 +1,4 @@
-@host = https://ne235ye2mb.execute-api.eu-central-1.amazonaws.com/dev
+@host = https://gn5o5h1kf8.execute-api.eu-central-1.amazonaws.com/dev
 
 ####
 # getAll
@@ -19,17 +19,18 @@ Content-Type: application/json
 
 ####
 # getById
-GET {{ host }}/perfume/1
+GET {{ host }}/perfume/bdb29453-c0db-42d5-a727-ed758ddfb262
 
 ####
 # updatePerfume
-PUT {{ host }}/perfume/2
+PUT {{ host }}/perfume/bdb29453-c0db-42d5-a727-ed758ddfb262
 Content-Type: application/json
 
 {
-    "name": "New name"
+    "brand": "zaktualizowany brand",
+    "capacity": 99999
 }
 
 ####
 # removePerfume
-DELETE {{ host }}/perfume/2
+DELETE {{ host }}/perfume/2e297fd6-fbf3-4826-bb88-139bf56f4dde

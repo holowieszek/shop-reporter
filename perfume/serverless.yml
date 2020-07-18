@@ -33,6 +33,8 @@ functions:
       - http:
           path: perfume
           method: GET
+          cors: true
+          authorizer: aws_iam
 
   createPerfume:
     handler: src/createPerfume/function.invoke
@@ -45,6 +47,8 @@ functions:
       - http:
           path: perfume
           method: POST
+          cors: true
+          authorizer: aws_iam
 
   getById:
     handler: src/getById/function.invoke
@@ -57,20 +61,36 @@ functions:
       - http:
           path: perfume/{id}
           method: GET
+          cors: true
+          authorizer: aws_iam
 
   updatePerfume:
     handler: src/updatePerfume/function.invoke
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:UpdateItem
+        Resource: "arn:aws:dynamodb:${self:provider.region}:*:table/${self:custom.tableName}"
     events:
       - http:
           path: perfume/{id}
           method: PUT
+          cors: true
+          authorizer: aws_iam
 
   removePerfume:
     handler: src/removePerfume/function.invoke
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:DeleteItem
+        Resource: "arn:aws:dynamodb:${self:provider.region}:*:table/${self:custom.tableName}"
     events:
       - http:
           path: perfume/{id}
           method: DELETE
+          cors: true
+          authorizer: aws_iam
 
 resources:
   Resources:

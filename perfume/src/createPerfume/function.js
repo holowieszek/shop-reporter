@@ -1,7 +1,7 @@
 const persistence = require('../common/persistence')
 const dbAdapter = require('../common/dbAdapterDynamoDb')
 const asyncWrapper = require('../common/asyncWrapper')
-const returnResponse = require('../common/returnResponse');
+const returnResponse = require('../common/returnResponse')
 const validator = require('./validator')
 
 const invoke = async (event) => {
@@ -15,7 +15,7 @@ const invoke = async (event) => {
 
   const { error, result } = await asyncWrapper(persistence.create(dbAdapter, data))
 
-  return !error ? returnResponse(result, 201) : returnResponse({ error: 'Something went wrong!' }, 400);
-};
+  return !error ? returnResponse(result, 201) : returnResponse({ error: 'Something went wrong!' }, 400)
+}
 
-exports.invoke = invoke;
+exports.invoke = invoke
