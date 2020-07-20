@@ -1,0 +1,31 @@
+service: shop-reporter-frontend-ci-cd-pipeline
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  region: ${self:custom.deployment.myRegion.${self:custom.deployment.myStage}}
+  profile: ${self:custom.deployment.myProfile.${self:custom.deployment.myStage}}
+  
+custom:
+  deployment: ${file(config/deployment.yml):deployment}
+
+resources:
+  Resources:
+    FrontendPipeline:
+      Type: AWS::CodePipeline::Pipeline
+      Properties:
+        Name: ${self:service}-${self:custom.deployment.myStage}-frontend-ci-cd-pipeline
+        RoleArn: 
+        ArtifactStore:
+          Type: S3
+          Location: 
+        Stages: 
+          - 
+            Name: name
+            Actions:
+              - actions
+            Blockers:
+              - blockers
+        RestartExecutionOnUpdate: true | false
+        DisableInboundStageTransitions: 
